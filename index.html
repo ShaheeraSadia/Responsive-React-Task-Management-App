@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -46,46 +46,77 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             margin-bottom: 2rem;
         }
 
         .header-content {
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .header-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: white;
-            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 0.5rem;
         }
 
         .header-icon {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
+            width: 2.5rem;
+            height: 2.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
-        .header-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.1rem;
-            font-weight: 400;
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: rgba(255, 255, 255, 0.4);
         }
 
         /* Main Content */
         .main-content {
             flex: 1;
             padding-bottom: 2rem;
+        }
+
+        /* Page Styles */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
         }
 
         /* Task Form */
@@ -141,6 +172,10 @@
         .add-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .add-btn:active {
+            transform: translateY(0);
         }
 
         .add-btn:disabled {
@@ -346,6 +381,158 @@
             transform: translateY(-1px);
         }
 
+        /* Stats Page */
+        .stats-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chart-container {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .chart-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Settings Page */
+        .settings-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .settings-section {
+            margin-bottom: 2rem;
+        }
+
+        .settings-section h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e1e5e9;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-weight: 500;
+        }
+
+        .setting-description {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #667eea;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .select-input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e1e5e9;
+            border-radius: 6px;
+            background: white;
+        }
+
         /* Footer */
         .footer {
             background: rgba(0, 0, 0, 0.1);
@@ -380,13 +567,22 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-title {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
             
             .header-icon {
-                width: 2.5rem;
-                height: 2.5rem;
-                font-size: 1.2rem;
+                width: 2rem;
+                height: 2rem;
+                font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                gap: 0.5rem;
+            }
+            
+            .nav-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
             }
             
             .task-form {
@@ -421,6 +617,10 @@
                 opacity: 1;
             }
             
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .footer-content {
                 flex-direction: column;
                 text-align: center;
@@ -437,15 +637,22 @@
             }
             
             .header {
-                padding: 1.5rem 0;
+                padding: 1rem 0;
             }
             
             .header-title {
-                font-size: 1.75rem;
+                font-size: 1.5rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
             }
             
             .task-form,
-            .task-list-container {
+            .task-list-container,
+            .stats-container,
+            .settings-container {
                 border-radius: 12px;
             }
             
@@ -479,6 +686,15 @@
         .task-item {
             animation: slideIn 0.3s ease;
         }
+
+        /* Button click animation */
+        .clickable {
+            transition: all 0.2s ease;
+        }
+
+        .clickable:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 <body>
@@ -488,7 +704,7 @@
         const { useState, useEffect } = React;
 
         // Header Component
-        function Header() {
+        function Header({ currentPage, onPageChange }) {
             return React.createElement('header', { className: 'header' },
                 React.createElement('div', { className: 'container' },
                     React.createElement('div', { className: 'header-content' },
@@ -496,7 +712,29 @@
                             React.createElement('span', { className: 'header-icon' }, '✓'),
                             'Task Manager'
                         ),
-                        React.createElement('p', { className: 'header-subtitle' }, 'Stay organized and productive')
+                        React.createElement('div', { className: 'nav-buttons' },
+                            React.createElement('button', {
+                                className: `nav-btn clickable ${currentPage === 'tasks' ? 'active' : ''}`,
+                                onClick: () => onPageChange('tasks')
+                            },
+                                React.createElement('span', {}, '📝'),
+                                'Tasks'
+                            ),
+                            React.createElement('button', {
+                                className: `nav-btn clickable ${currentPage === 'stats' ? 'active' : ''}`,
+                                onClick: () => onPageChange('stats')
+                            },
+                                React.createElement('span', {}, '📊'),
+                                'Stats'
+                            ),
+                            React.createElement('button', {
+                                className: `nav-btn clickable ${currentPage === 'settings' ? 'active' : ''}`,
+                                onClick: () => onPageChange('settings')
+                            },
+                                React.createElement('span', {}, '⚙️'),
+                                'Settings'
+                            )
+                        )
                     )
                 )
             );
@@ -526,7 +764,7 @@
                     }),
                     React.createElement('button', {
                         type: 'submit',
-                        className: 'add-btn',
+                        className: 'add-btn clickable',
                         disabled: !taskText.trim()
                     },
                         React.createElement('span', { className: 'add-btn-icon' }, '+'),
@@ -552,7 +790,7 @@
             },
                 React.createElement('div', { className: 'task-content' },
                     React.createElement('button', {
-                        className: `checkbox ${task.completed ? 'checked' : ''}`,
+                        className: `checkbox clickable ${task.completed ? 'checked' : ''}`,
                         onClick: () => onToggle(task.id),
                         'aria-label': task.completed ? 'Mark as incomplete' : 'Mark as complete'
                     }, task.completed && '✓'),
@@ -564,7 +802,7 @@
                     )
                 ),
                 React.createElement('button', {
-                    className: 'delete-btn',
+                    className: 'delete-btn clickable',
                     onClick: () => onDelete(task.id),
                     'aria-label': 'Delete task'
                 }, '×')
@@ -585,15 +823,15 @@
                 // Filter Tabs
                 React.createElement('div', { className: 'filter-tabs' },
                     React.createElement('button', {
-                        className: `filter-tab ${filter === 'all' ? 'active' : ''}`,
+                        className: `filter-tab clickable ${filter === 'all' ? 'active' : ''}`,
                         onClick: () => onFilterChange('all')
                     }, `All (${stats.total})`),
                     React.createElement('button', {
-                        className: `filter-tab ${filter === 'active' ? 'active' : ''}`,
+                        className: `filter-tab clickable ${filter === 'active' ? 'active' : ''}`,
                         onClick: () => onFilterChange('active')
                     }, `Active (${stats.active})`),
                     React.createElement('button', {
-                        className: `filter-tab ${filter === 'completed' ? 'active' : ''}`,
+                        className: `filter-tab clickable ${filter === 'completed' ? 'active' : ''}`,
                         onClick: () => onFilterChange('completed')
                     }, `Completed (${stats.completed})`)
                 ),
@@ -623,9 +861,131 @@
                 // Actions
                 stats.completed > 0 && React.createElement('div', { className: 'task-actions' },
                     React.createElement('button', {
-                        className: 'clear-btn',
+                        className: 'clear-btn clickable',
                         onClick: onClearCompleted
                     }, `Clear Completed (${stats.completed})`)
+                )
+            );
+        }
+
+        // Stats Page Component
+        function StatsPage({ tasks }) {
+            const stats = {
+                total: tasks.length,
+                active: tasks.filter(task => !task.completed).length,
+                completed: tasks.filter(task => task.completed).length,
+                completionRate: tasks.length > 0 ? Math.round((tasks.filter(task => task.completed).length / tasks.length) * 100) : 0
+            };
+
+            return React.createElement('div', { className: 'stats-container' },
+                React.createElement('h2', { style: { marginBottom: '1.5rem', color: '#333' } }, 'Task Statistics'),
+                React.createElement('div', { className: 'stats-grid' },
+                    React.createElement('div', { className: 'stat-card' },
+                        React.createElement('div', { className: 'stat-value' }, stats.total),
+                        React.createElement('div', { className: 'stat-label' }, 'Total Tasks')
+                    ),
+                    React.createElement('div', { className: 'stat-card' },
+                        React.createElement('div', { className: 'stat-value' }, stats.active),
+                        React.createElement('div', { className: 'stat-label' }, 'Active Tasks')
+                    ),
+                    React.createElement('div', { className: 'stat-card' },
+                        React.createElement('div', { className: 'stat-value' }, stats.completed),
+                        React.createElement('div', { className: 'stat-label' }, 'Completed Tasks')
+                    ),
+                    React.createElement('div', { className: 'stat-card' },
+                        React.createElement('div', { className: 'stat-value' }, `${stats.completionRate}%`),
+                        React.createElement('div', { className: 'stat-label' }, 'Completion Rate')
+                    )
+                ),
+                React.createElement('div', { className: 'chart-container' },
+                    React.createElement('h3', { style: { marginBottom: '1rem', color: '#333' } }, 'Productivity Overview'),
+                    React.createElement('div', { className: 'chart-placeholder' },
+                        'Productivity Chart Visualization'
+                    )
+                )
+            );
+        }
+
+        // Settings Page Component
+        function SettingsPage() {
+            const [settings, setSettings] = useState({
+                darkMode: false,
+                notifications: true,
+                autoSave: true,
+                language: 'en'
+            });
+
+            const handleSettingChange = (setting, value) => {
+                setSettings(prev => ({
+                    ...prev,
+                    [setting]: value
+                }));
+            };
+
+            return React.createElement('div', { className: 'settings-container' },
+                React.createElement('h2', { style: { marginBottom: '1.5rem', color: '#333' } }, 'App Settings'),
+                React.createElement('div', { className: 'settings-section' },
+                    React.createElement('h3', {}, 'Appearance'),
+                    React.createElement('div', { className: 'setting-item' },
+                        React.createElement('div', {},
+                            React.createElement('div', { className: 'setting-label' }, 'Dark Mode'),
+                            React.createElement('div', { className: 'setting-description' }, 'Switch to dark theme')
+                        ),
+                        React.createElement('label', { className: 'toggle-switch' },
+                            React.createElement('input', {
+                                type: 'checkbox',
+                                checked: settings.darkMode,
+                                onChange: (e) => handleSettingChange('darkMode', e.target.checked)
+                            }),
+                            React.createElement('span', { className: 'toggle-slider' })
+                        )
+                    ),
+                    React.createElement('div', { className: 'setting-item' },
+                        React.createElement('div', {},
+                            React.createElement('div', { className: 'setting-label' }, 'Language'),
+                            React.createElement('div', { className: 'setting-description' }, 'Change app language')
+                        ),
+                        React.createElement('select', {
+                            className: 'select-input',
+                            value: settings.language,
+                            onChange: (e) => handleSettingChange('language', e.target.value)
+                        },
+                            React.createElement('option', { value: 'en' }, 'English'),
+                            React.createElement('option', { value: 'es' }, 'Spanish'),
+                            React.createElement('option', { value: 'fr' }, 'French')
+                        )
+                    )
+                ),
+                React.createElement('div', { className: 'settings-section' },
+                    React.createElement('h3', {}, 'Functionality'),
+                    React.createElement('div', { className: 'setting-item' },
+                        React.createElement('div', {},
+                            React.createElement('div', { className: 'setting-label' }, 'Notifications'),
+                            React.createElement('div', { className: 'setting-description' }, 'Receive task reminders')
+                        ),
+                        React.createElement('label', { className: 'toggle-switch' },
+                            React.createElement('input', {
+                                type: 'checkbox',
+                                checked: settings.notifications,
+                                onChange: (e) => handleSettingChange('notifications', e.target.checked)
+                            }),
+                            React.createElement('span', { className: 'toggle-slider' })
+                        )
+                    ),
+                    React.createElement('div', { className: 'setting-item' },
+                        React.createElement('div', {},
+                            React.createElement('div', { className: 'setting-label' }, 'Auto-save'),
+                            React.createElement('div', { className: 'setting-description' }, 'Automatically save changes')
+                        ),
+                        React.createElement('label', { className: 'toggle-switch' },
+                            React.createElement('input', {
+                                type: 'checkbox',
+                                checked: settings.autoSave,
+                                onChange: (e) => handleSettingChange('autoSave', e.target.checked)
+                            }),
+                            React.createElement('span', { className: 'toggle-slider' })
+                        )
+                    )
                 )
             );
         }
@@ -650,6 +1010,7 @@
         function App() {
             const [tasks, setTasks] = useState([]);
             const [filter, setFilter] = useState('all');
+            const [currentPage, setCurrentPage] = useState('tasks');
 
             // Load tasks from localStorage on component mount
             useEffect(() => {
@@ -706,19 +1067,39 @@
             };
 
             return React.createElement('div', { className: 'app' },
-                React.createElement(Header),
+                React.createElement(Header, {
+                    currentPage: currentPage,
+                    onPageChange: setCurrentPage
+                }),
                 React.createElement('main', { className: 'main-content' },
                     React.createElement('div', { className: 'container' },
-                        React.createElement(TaskForm, { onAddTask: addTask }),
-                        React.createElement(TaskList, {
-                            tasks: filteredTasks,
-                            onToggleTask: toggleTask,
-                            onDeleteTask: deleteTask,
-                            filter: filter,
-                            onFilterChange: setFilter,
-                            onClearCompleted: clearCompleted,
-                            stats: stats
-                        })
+                        // Tasks Page
+                        React.createElement('div', {
+                            className: `page ${currentPage === 'tasks' ? 'active' : ''}`
+                        },
+                            React.createElement(TaskForm, { onAddTask: addTask }),
+                            React.createElement(TaskList, {
+                                tasks: filteredTasks,
+                                onToggleTask: toggleTask,
+                                onDeleteTask: deleteTask,
+                                filter: filter,
+                                onFilterChange: setFilter,
+                                onClearCompleted: clearCompleted,
+                                stats: stats
+                            })
+                        ),
+                        // Stats Page
+                        React.createElement('div', {
+                            className: `page ${currentPage === 'stats' ? 'active' : ''}`
+                        },
+                            React.createElement(StatsPage, { tasks: tasks })
+                        ),
+                        // Settings Page
+                        React.createElement('div', {
+                            className: `page ${currentPage === 'settings' ? 'active' : ''}`
+                        },
+                            React.createElement(SettingsPage)
+                        )
                     )
                 ),
                 React.createElement(Footer)
@@ -731,3 +1112,7 @@
     </script>
 </body>
 </html>
+
+       
+        
+       
